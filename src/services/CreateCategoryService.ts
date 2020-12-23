@@ -8,6 +8,7 @@ interface Request {
 class CreateCategory {
   public async execute({ title }: Request): Promise<Category> {
     const categoriesRepository = getRepository(Category);
+
     const category = categoriesRepository.create({
       title,
     });
