@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 import Category from './Category';
 
 @Entity('transactions')
@@ -20,15 +21,12 @@ class Transaction {
   @Column('enum')
   type: 'income' | 'outcome';
 
-  @Column('numeric')
+  @Column('decimal')
   value: number;
-
-  @Column()
-  category_id: string;
 
   @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
-  category: Category;
+  category_id: string;
 
   @CreateDateColumn()
   created_at: Date;
